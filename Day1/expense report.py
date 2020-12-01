@@ -27,8 +27,6 @@ def get_mult_of_three(array:list, sum:int)->int:
             else:
                 complements[sum - cur_sum] = [ind1,ind2]
 
-
-
 input = [
     2010,
     1856,
