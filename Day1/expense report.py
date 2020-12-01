@@ -231,12 +231,11 @@ input = [
     2005
 ]
 
-# sum = get_mult_of_two(input,2020)
-# print(sum)
-#
-# sum = get_mult_of_three(input,2020)
-# print(sum)
-
-sum = get_mult_of_three2(input,2020)
+sum = get_mult_of_two(input,2020)
 print(sum)
+
+sum = get_mult_of_three(input,2020)
+print(sum)
+
+
 
