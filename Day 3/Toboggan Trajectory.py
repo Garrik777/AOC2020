@@ -26,7 +26,7 @@ def read_input(path:str):
 
     return path_grid, hor_steps-1, vert_steps-1
 
-def trees_count(path_grid, hor_steps, vert_steps, step_right, step_down):
+def trees_count(path_grid:list, hor_steps:int, vert_steps:int, step_right:int, step_down:int)->int:
 
     x = 0
     y = 0
@@ -60,3 +60,4 @@ slope4 = trees_count(path_grid, hor_steps, vert_steps, 7,1)
 slope5 = trees_count(path_grid, hor_steps, vert_steps, 1,2)
 
 print(slope1, slope2, slope3, slope4, slope5)
+print(slope1 * slope2 * slope3 * slope4 * slope5)
