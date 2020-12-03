@@ -40,7 +40,6 @@ while True:
 
     if x > hor_steps:
         x = x- 1 - hor_steps
-        first_grid = False
 
     if y > vert_steps:
         break
