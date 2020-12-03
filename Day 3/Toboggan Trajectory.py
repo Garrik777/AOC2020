@@ -26,28 +26,33 @@ def read_input(path:str):
 
     return path_grid, hor_steps-1, vert_steps-1
 
+def trees_count(path_grid, hor_steps, vert_steps, step_right, step_down):
+
+    x = 0
+    y = 0
+
+    counter = 0
+
+    while True:
+
+        x += step_right
+        y += step_down
+
+        if x > hor_steps:
+            x = x - 1 - hor_steps
+
+        if y > vert_steps:
+            break
+
+        cur_point = path_grid[y][x]
+
+        if cur_point == "#":
+            counter += 1
+
+    return counter
+
 path_grid, hor_steps, vert_steps = read_input("./input.txt")
 
-x = 0
-y = 0
 
-counter = 0
 
-while True:
-
-    x += 3
-    y += 1
-
-    if x > hor_steps:
-        x = x- 1 - hor_steps
-
-    if y > vert_steps:
-        break
-
-    cur_point = path_grid [y][x]
-
-    if cur_point == "#":
-        print(x+1, y+1)
-        counter += 1
-
-print(counter)
+print(trees_count(path_grid, hor_steps, vert_steps, 3,1))
