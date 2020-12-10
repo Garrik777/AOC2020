@@ -1,5 +1,4 @@
 from pathlib import Path
-from collections import defaultdict
 
 def read_input(path:str)->list:
 
@@ -123,20 +122,32 @@ def count_variations3(jolts:list):
 
      third_jolt = rest_jolts[0]
 
-def count_variations4(jolts:list)->int:
+def count_variations5(jolts:list)->int:
 
-    tries = defaultdict(int)
-    tries[0] = 1
+    tries = {0:1}
+    group = [1, 2, 3]
+
     for jolt in jolts:
 
-        tries[jolt] = sum([tries[jolt - d] for d in [1, 2, 3]])
+        temp = []
+
+        for d in group:
+
+            if tries.get(jolt-d) != None:
+                temp.append(tries[jolt - d])
+            else:
+                temp.append(0)
+
+        tries[jolt] = sum(temp)
+
+        # print(tries)
 
     return tries[jolts[-1]]
 
 
-# jolts = read_input("./test_input.txt")
+jolts = read_input("./test_input.txt")
 # jolts = read_input("./test_input2.txt")
-jolts = read_input("./input.txt")
+# jolts = read_input("./input.txt")
 
 jolts.sort()
 # print(jolts)
@@ -144,7 +155,7 @@ diff = count_differences(jolts)
 print(diff)
 
 
-variations = count_variations4(jolts)
+variations = count_variations5(jolts)
 print(variations)
 
 
