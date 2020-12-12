@@ -1,6 +1,8 @@
 from pprint import pprint
 from pathlib import Path
 
+#Part 1
+
 def move_in_current_direction(moves, current_direction, x, y):
     if current_direction == "E":
         x = x + moves
@@ -113,6 +115,13 @@ def get_coordinates(path:str)->dict:
 
     return x, y
 
+# x, y = get_coordinates("./test_input.txt")
+x, y = get_coordinates("./input.txt")
+print(x,y)
+print(abs(x)+abs(y))
+
+#Part 2
+
 def move_in_current_direction2(moves, current_direction, x, y, way_x, way_y):
 
     x = x + way_x * moves
@@ -190,19 +199,12 @@ def get_coordinates2(path:str)->dict:
             elif action == "L" or action == "R":
                 way_x, way_y = change_waypoint_direction(action, moves, way_x, way_y)
 
-            print(f"{x}, {y}")
-            print(f"waypoint:{way_x},{way_y}")
+            # print(f"{x}, {y}")
+            # print(f"waypoint:{way_x},{way_y}")
 
 
     return x, y
 
-#Part 1
-# x, y = get_coordinates("./test_input.txt")
-x, y = get_coordinates("./input.txt")
-print(x,y)
-print(abs(x)+abs(y))
-
-#Part 2
 # x, y = get_coordinates2("./test_input.txt")
 x2, y2 = get_coordinates2("./input.txt")
 print(x2,y2)
