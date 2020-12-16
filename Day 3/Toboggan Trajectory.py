@@ -52,6 +52,7 @@ def trees_count(path_grid:list, hor_steps:int, vert_steps:int, step_right:int, s
     return counter
 
 path_grid, hor_steps, vert_steps = read_input("./input.txt")
+# path_grid, hor_steps, vert_steps = read_input("./inputday3.txt")
 
 slope1 = trees_count(path_grid, hor_steps, vert_steps, 1,1)
 slope2 = trees_count(path_grid, hor_steps, vert_steps, 3,1)
@@ -61,3 +62,5 @@ slope5 = trees_count(path_grid, hor_steps, vert_steps, 1,2)
 
 print(slope1, slope2, slope3, slope4, slope5)
 print(slope1 * slope2 * slope3 * slope4 * slope5)
+
+
