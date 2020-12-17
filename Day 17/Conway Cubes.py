@@ -2,6 +2,8 @@ from pathlib import Path
 from pprint import pprint
 from collections import defaultdict
 
+# Part 1
+
 def read_input(path:str)->dict:
 
     cubes = {}
@@ -18,6 +20,7 @@ def read_input(path:str)->dict:
 
             for char in raw_line:
                 if char == ".":
+                    x += 1
                     continue
                 # cubes.append(Cube(char, x,y,z))
                 cubes[(x,y,z)] = char
@@ -31,7 +34,6 @@ def read_input(path:str)->dict:
 def cycle(cubes):
 
     new_cubes = defaultdict(int)
-
 
     for coord in cubes.keys():
 
@@ -48,6 +50,7 @@ def cycle(cubes):
 
                     new_cubes[(x+x_c,y+y_c,z+z_c)] +=1
 
+    # pprint(new_cubes)
     cubes_copy = {}
 
     for cube in new_cubes:
@@ -56,14 +59,26 @@ def cycle(cubes):
         elif cube in cubes and new_cubes[cube] in (2, 3):
             cubes_copy[cube] = "#"
 
+    # pprint(sorted(cubes_copy,key=lambda x: x[2]))
     return cubes_copy
 
-def run_cycles(cubes, number_of_cycles):
+def run_cycles(cubes, cycles):
 
-    for _ in range(number_of_cycles):
+    for _ in range(cycles):
         cubes = cycle(cubes)
 
     return len(cubes)
+
+
+initial_state = read_input("./input.txt")
+# initial_state = read_input("./test_input.txt")
+# pprint(initial_state)
+
+cubes = run_cycles(initial_state, 6)
+# pprint(sorted(cubes, key=lambda x: x[2]))
+print(cubes)
+
+# Part 2
 
 def read_input2(path:str)->dict:
 
@@ -81,6 +96,7 @@ def read_input2(path:str)->dict:
 
             for char in raw_line:
                 if char == ".":
+                    x += 1
                     continue
                 # cubes.append(Cube(char, x,y,z))
                 cubes[(x,y,z,w)] = char
@@ -92,6 +108,7 @@ def read_input2(path:str)->dict:
     return cubes
 
 def cycle2(cubes):
+
     new_cubes = defaultdict(int)
 
     for coord in cubes.keys():
@@ -105,12 +122,12 @@ def cycle2(cubes):
             for y_c in [-1, 0, 1]:
                 for z_c in [-1, 0, 1]:
                     for w_c in [-1, 0, 1]:
-
-                        if x_c == y_c == z_c == w_c = 0:
+                        if x_c == y_c == z_c == w_c ==0:
                             continue
 
-                        new_cubes[(x + x_c, y + y_c, z + z_c, w + w_c)] += 1
+                        new_cubes[(x+x_c,y+y_c,z+z_c,w+w_c)] +=1
 
+    # pprint(new_cubes)
     cubes_copy = {}
 
     for cube in new_cubes:
@@ -119,28 +136,20 @@ def cycle2(cubes):
         elif cube in cubes and new_cubes[cube] in (2, 3):
             cubes_copy[cube] = "#"
 
+    # pprint(sorted(cubes_copy,key=lambda x: x[2]))
     return cubes_copy
 
-def run_cycles2(cubes, number_of_cycles):
+def run_cycles2(cubes, cycles):
 
-    for _ in range(number_of_cycles):
-        cubes = cycle(cubes)
+    for _ in range(cycles):
+        cubes = cycle2(cubes)
 
     return len(cubes)
 
-initial_state = read_input("./input.txt")
-pprint(initial_state)
-
-# first_run = cycle(initial_state)
-# pprint(first_run)
-
-cubes = run_cycles(initial_state, 6)
-pprint(cubes)
-
 initial_state = read_input2("./input.txt")
-pprint(initial_state)
+# initial_state = read_input2("./test_input.txt")
+# pprint(initial_state)
 
 cubes = run_cycles2(initial_state, 6)
-pprint(cubes)
-
-
+# pprint(sorted(cubes, key=lambda x: x[2]))
+print(cubes)
