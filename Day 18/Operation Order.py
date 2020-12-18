@@ -76,8 +76,8 @@ def read_input(path:str)->dict:
 # res = eval_expression(expression)
 # print(res)
 
-# res = read_input("./input.txt")
-# print(res)
+res = read_input("./input.txt")
+print(res)
 
 # Part 2
 
