@@ -46,7 +46,7 @@ def count_cups(cups):
 
 #Part 1
 
-res = play_game([3,8,9,1,2,5,4,6,7],10)
+# res = play_game([3,8,9,1,2,5,4,6,7],10)
 res = play_game([4,8,7,9,1,2,3,6,5],100)
 res = count_cups(res)
 print(res)
