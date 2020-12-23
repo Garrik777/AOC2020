@@ -1,31 +1,5 @@
 from collections import deque
 
-def insert_values(cups, pos, val):
-
-    mid_of_array = len(cups)//2
-    ar = []
-
-    if pos <= mid_of_array: #poping lesf
-        for ind in range(pos):
-            ar.append(cups.popleft())
-        # cups.extendleft(val)
-        for ind in range(len(val)-1,-1,-1):
-            cups.appendleft(val[ind])
-
-        for ind in range(len(ar)):
-            cups.appendleft(ar.pop())
-
-    else: #popping right
-        for ind in range(pos,len(cups)):
-            ar.append(cups.pop())
-
-        cups.extend(val)
-
-        for ind in range(len(ar)):
-            cups.append(ar.pop())
-
-    return cups
-
 def play_game(cups, moves):
 
     cups = deque(cups)
@@ -50,17 +24,9 @@ def play_game(cups, moves):
 
         pos = cups.index(dest)+1
 
-        # insert_values(cups, pos, del_cups)
-
         for item in del_cups:
             cups.insert(pos, item)
             pos += 1
-
-        # tmp = cups[pos-1:]
-        # cups = deque(cups[:pos]).extend(del_cups)
-        # cups.extend(tmp)
-
-
         del_cups = []
         cups.rotate(-1)
 
@@ -80,12 +46,10 @@ def count_cups(cups):
 
 #Part 1
 
-# res = play_game([3,8,9,1,2,5,4,6,7],10)
-# res = play_game([4,8,7,9,1,2,3,6,5],100)
-# print(res)
-#
-# res = count_cups(res)
-# print(res)
+res = play_game([3,8,9,1,2,5,4,6,7],10)
+res = play_game([4,8,7,9,1,2,3,6,5],100)
+res = count_cups(res)
+print(res)
 
 # Part 2
 
@@ -107,11 +71,9 @@ def count_cups2(cups):
 
     return cups[pos+1] * cups[pos+2]
 
-
 mil_cups = get_mil_cups([4,8,7,9,1,2,3,6,5], 1000000)
 mil_cups = play_game(mil_cups, 10000000)
 mil_cups = count_cups2(mil_cups)
-
 print(mil_cups)
 
 
